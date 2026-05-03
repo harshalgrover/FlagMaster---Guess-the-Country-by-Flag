@@ -1,8 +1,12 @@
+import StartPage from './components/StartPage';
+import './App.css';
+
 function App() {
   return (
-    <>
-    HELLO FROM HARSHAL
-    </>
-  )
+    <div className="app-container">
+        <StartPage />
+    </div>
+  );
 }
-export default App
+
+export default App;

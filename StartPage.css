@@ -1,0 +1,28 @@
+.start-card {
+  text-align: center;
+  background: white;
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.earth-emoji {
+  font-size: 5rem;
+  margin: 20px 0;
+}
+
+.play-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.play-btn:hover {
+  transform: scale(1.05);
+  background: #0056b3;
+}
