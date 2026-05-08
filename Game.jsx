@@ -25,6 +25,23 @@ export default function Game({ onExit }) {
     setOptions(opts.sort(() => Math.random() - 0.5));
   }
 
+  function handleClick(name) {
+    if (selected) return;
+    setSelected(name);
+    if (name === question.name.common) {
+      setScore(score + 1);
+    }
+
+    setTimeout(() => {
+      if (count === 10) {
+        setFinished(true);
+      } else {
+        setCount(count + 1);
+        newQuestion(countries);
+      }
+    }, 1000);
+  }
+
   function restartGame() {
     setScore(0);
     setCount(1);
@@ -55,4 +72,50 @@ export default function Game({ onExit }) {
       </div>
     );
   }
+  
+
+  return (
+    <div className="game-card">
+
+      <h3>
+        Question {count}/10
+      </h3>
+
+      <h3>
+        Score: {score}
+      </h3>
+
+      <img
+        src={question.flags.svg}
+        alt="flag"
+        width="200"
+      />
+
+      <div className="options-grid">
+        {options.map((country) => {
+          const name = country.name.common;
+
+          let className = "option-btn";
+
+          if (selected) {
+            if (name === question.name.common) {
+              className += " correct";
+            } else if (name === selected) {
+              className += " wrong";
+            }
+          }
+
+          return (
+            <button
+              key={country.cca3}
+              className={className}
+              onClick={() => handleClick(name)}
+            >
+              {name}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
